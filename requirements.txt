@@ -1,0 +1,4 @@
+python-gnupg==0.5.2
+gnupg==2.3.1
+setuptools_scm
+wheel
