@@ -1,8 +1,8 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
-from submodules.authhandler import generate_key as genkey
-import submodules.jsonhandler as json
+from authhandler import generate_key as genkey
+import jsonhandler as json
 import os
-from submodules.encryptor import *
+from encryptor import *
 
 if os.path.exists('messages.json') == False:
     with open('messages.json'):

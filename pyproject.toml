@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyhttpchat-server_EnvIr0n"
+version = "0.0.1"
+authors = [
+  { name="EnvIr0n", email="envir0n@proton.me" },
+]
+description = "the server for the python http chat project"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GPL version 3",
+    "Operating System :: Linux",
+]
+
+[project.urls]
+Homepage = "https://github.com/Env-Ir0n/PYHTTPCHAT-SERVER"
