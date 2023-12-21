@@ -13,7 +13,7 @@ setup(
     url='GITHUB URL',
     entry_points={
         'console_scripts' : [
-            'runhttpchat=pyhttpchat.module:run'
+            'runhttpchat = pyhttpchat:run'
         ]
     }
 
