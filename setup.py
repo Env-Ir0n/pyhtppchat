@@ -11,11 +11,6 @@ setup(
     author = 'EnvIr0n',
     author_email = 'envir0n@proton.me',
     url='GITHUB URL',
-    entry_points={
-        'console_scripts' : [
-            'runhttpchat = pyhttpchat:run'
-        ]
-    }
-
+    scripts = ['pyhttpchat.py']
 
 )
