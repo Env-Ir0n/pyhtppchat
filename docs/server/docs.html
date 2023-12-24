@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PyHTTPChat | Server Documentaion</title>
+    <meta property="og:title" content="PyHTTPChat | Server Documentaion" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="shortcut icon"
+      href="public/coollogo_com-16906413.gif"
+      type="icon/png"
+      sizes="32x32"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
+    />
+    <style>
+      @keyframes fade-in-left {
+        0% {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <link rel="stylesheet" href="../style.css" />
+    <div>
+      <link href="./docs.css" rel="stylesheet" />
+
+      <div class="server-documentation-container">
+        <div class="server-documentation-header">
+          <header
+            data-thq="thq-navbar"
+            class="server-documentation-navbar-interactive"
+          >
+            <span class="server-documentation-logo">PYHTTPCHAT</span>
+            <div
+              data-thq="thq-navbar-nav"
+              class="server-documentation-desktop-menu"
+            >
+              <nav class="server-documentation-links">
+                <span class="server-documentation-nav2">Client</span>
+                <span class="server-documentation-nav3">Docs</span>
+                <span class="server-documentation-nav4">Donation</span>
+                <a href="../index.html" class="server-documentation-nav5">
+                  Home
+                </a>
+              </nav>
+              <div class="server-documentation-buttons"></div>
+            </div>
+            <div
+              data-thq="thq-burger-menu"
+              class="server-documentation-burger-menu"
+            >
+              <svg viewBox="0 0 1024 1024" class="server-documentation-icon">
+                <path
+                  d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+                ></path>
+              </svg>
+            </div>
+            <div
+              data-thq="thq-mobile-menu"
+              class="server-documentation-mobile-menu"
+            >
+              <div class="server-documentation-nav">
+                <div class="server-documentation-top">
+                  <span class="server-documentation-logo1">PYHTTPCHAT</span>
+                  <div
+                    data-thq="thq-close-menu"
+                    class="server-documentation-close-menu"
+                  >
+                    <svg
+                      viewBox="0 0 1024 1024"
+                      class="server-documentation-icon02"
+                    >
+                      <path
+                        d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <nav class="server-documentation-links1">
+                  <span class="server-documentation-nav1">Server</span>
+                  <span class="server-documentation-nav21">Client</span>
+                  <span class="server-documentation-nav31">Docs</span>
+                  <span class="server-documentation-nav41">Donation</span>
+                  <span class="server-documentation-nav51">Home</span>
+                </nav>
+                <div class="server-documentation-buttons1">
+                  <button class="server-documentation-login button">
+                    Login
+                  </button>
+                  <button class="server-documentation-register button">
+                    Register
+                  </button>
+                </div>
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 950.8571428571428 1024"
+                  class="server-documentation-icon04"
+                >
+                  <path
+                    d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
+                  ></path></svg
+                ><svg
+                  viewBox="0 0 877.7142857142857 1024"
+                  class="server-documentation-icon06"
+                >
+                  <path
+                    d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
+                  ></path></svg
+                ><svg
+                  viewBox="0 0 602.2582857142856 1024"
+                  class="server-documentation-icon08"
+                >
+                  <path
+                    d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          </header>
+        </div>
+        <div class="server-documentation-hero">
+          <div class="server-documentation-container1">
+            <h1 class="server-documentation-hero-heading heading1">
+              <span class="server-documentation-text">Server Documentaion</span>
+              <br />
+            </h1>
+            <span class="server-documentation-hero-sub-heading">
+              Got a problem? Diagnose it here
+            </span>
+            <div class="server-documentation-btn-group">
+              <a
+                href="#aboutserver"
+                class="server-documentation-hero-button2 button"
+              >
+                Learn More&nbsp;→
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="server-documentation-features">
+          <h1 class="server-documentation-text002">Table of contents</h1>
+          <div class="server-documentation-container2">
+            <a href="#Modules">
+              <div
+                class="feature-card1-feature-card feature-card1-root-class-name1"
+              >
+                <h2 class="feature-card1-text"><span>Modules</span></h2>
+                <img
+                  alt="image"
+                  src="https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDF8fHllbGxvdyUyMHRlY2h8ZW58MHx8fHwxNjI2MjU1NDk0&amp;ixlib=rb-1.2.1&amp;w=1000"
+                  class="feature-card1-image"
+                />
+              </div>
+            </a>
+            <a href="#API">
+              <div
+                class="feature-card1-feature-card feature-card1-root-class-name2"
+              >
+                <h2 class="feature-card1-text"><span>API</span></h2>
+                <img
+                  alt="image"
+                  src="https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDF8fHllbGxvdyUyMHRlY2h8ZW58MHx8fHwxNjI2MjU1NDk0&amp;ixlib=rb-1.2.1&amp;w=1000"
+                  class="feature-card1-image"
+                />
+              </div>
+            </a>
+            <div
+              class="feature-card1-feature-card feature-card1-root-class-name3"
+            >
+              <h2 class="feature-card1-text"><span>Lorem ipsum</span></h2>
+              <img
+                alt="image"
+                src="https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDF8fHllbGxvdyUyMHRlY2h8ZW58MHx8fHwxNjI2MjU1NDk0&amp;ixlib=rb-1.2.1&amp;w=1000"
+                class="feature-card1-image"
+              />
+            </div>
+            <div
+              class="feature-card1-feature-card feature-card1-root-class-name7"
+            >
+              <h2 class="feature-card1-text"><span>Lorem ipsum</span></h2>
+              <img
+                alt="image"
+                src="https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDF8fHllbGxvdyUyMHRlY2h8ZW58MHx8fHwxNjI2MjU1NDk0&amp;ixlib=rb-1.2.1&amp;w=1000"
+                class="feature-card1-image"
+              />
+            </div>
+          </div>
+        </div>
+        <div id="Modules" class="server-documentation-banner">
+          <h1 class="server-documentation-text003">
+            <span>Modules</span>
+            <br class="server-documentation-text005" />
+            <span></span>
+          </h1>
+          <span class="server-documentation-text007">
+            <span>
+              The server uses a few modules that are imported into 'Submodules'
+              to create a easier syntax for me to code with
+            </span>
+            <br />
+            <span>
+              while also keeping the code concise. However, these custom syntax
+              can be confusing, so here is a general
+            </span>
+            <br />
+            <span>overview of each one.</span>
+            <br />
+          </span>
+          <h2 class="server-documentation-text014">authhandler.py</h2>
+          <span>
+            <span>
+              the authhandler is responsible for generating, banishing, and
+              verifying user AUTH keys.
+            </span>
+            <br />
+            <span>This is a critical module</span>
+            <br />
+            <br />
+            <span>Imports:</span>
+            <br />
+            <span>String (builtin)</span>
+            <br />
+            <span>Random (builtin)</span>
+            <br />
+            <span>Jsonhandler as json (See jsonhandler.py)</span>
+            <br />
+            <br />
+            <span>Functions:&nbsp;</span>
+            <br />
+            <br />
+            <span>generate_key:</span>
+            <br />
+            <span>Generates and logs an AUTH key</span>
+            <br />
+            <br />
+            <span>arguments:&nbsp;</span>
+            <br />
+            <span>None</span>
+            <br />
+            <br />
+            <span>Returns:</span>
+            <br />
+            <span>key</span>
+            <br />
+            <br />
+            <span>Banish:</span>
+            <br />
+            <span>Removes keys</span>
+            <br />
+            <br />
+            <span>arguments:</span>
+            <br />
+            <span>key: The AUTH key to banish</span>
+            <br />
+            <br />
+            <span>Returns:</span>
+            <br />
+            <span>N/A</span>
+            <br />
+          </span>
+          <h2 class="server-documentation-text062">jsonhandler.py</h2>
+          <span>
+            <span class="server-documentation-text064">
+              The JSON handler is responsible for handling anything to do
+            </span>
+            <br class="server-documentation-text065" />
+            <span class="server-documentation-text066">
+              with JSON. For the sake of convienience json.dumps and json.dump
+            </span>
+            <br class="server-documentation-text067" />
+            <span class="server-documentation-text068">
+              is also stored here to not have to import json aswell
+            </span>
+            <br class="server-documentation-text069" />
+            <br class="server-documentation-text070" />
+            <br class="server-documentation-text071" />
+            <span class="server-documentation-text072">Imports:</span>
+            <br class="server-documentation-text073" />
+            <span class="server-documentation-text074">json (builtin)</span>
+            <br class="server-documentation-text075" />
+            <br class="server-documentation-text076" />
+            <span class="server-documentation-text077">Functions</span>
+            <span class="server-documentation-text078">:&nbsp;</span>
+            <br class="server-documentation-text079" />
+            <br class="server-documentation-text080" />
+            <span class="server-documentation-text081">retrieve</span>
+            <span class="server-documentation-text082">:</span>
+            <br class="server-documentation-text083" />
+            <span class="server-documentation-text084">
+              Returns the content of a JSON file in the form of a Python
+              Dictionary
+            </span>
+            <br class="server-documentation-text085" />
+            <br class="server-documentation-text086" />
+            <span class="server-documentation-text087">arguments</span>
+            <span class="server-documentation-text088">:&nbsp;</span>
+            <br class="server-documentation-text089" />
+            <span class="server-documentation-text090">
+              jsonfile: a string containing the path of the JSON file to
+              retrieve
+            </span>
+            <br class="server-documentation-text091" />
+            <br class="server-documentation-text092" />
+            <span class="server-documentation-text093">Returns</span>
+            <span class="server-documentation-text094">:</span>
+            <br class="server-documentation-text095" />
+            <span class="server-documentation-text096">
+              contents of jsonfile as a dictionary
+            </span>
+            <br class="server-documentation-text097" />
+            <br class="server-documentation-text098" />
+            <span class="server-documentation-text099">commit</span>
+            <span class="server-documentation-text100">:</span>
+            <br class="server-documentation-text101" />
+            <span class="server-documentation-text102">
+              overwrites the jsonfile
+            </span>
+            <br class="server-documentation-text103" />
+            <br class="server-documentation-text104" />
+            <span class="server-documentation-text105">arguments</span>
+            <span class="server-documentation-text106">:</span>
+            <br class="server-documentation-text107" />
+            <span class="server-documentation-text108">
+              jsonfile: the jsonfile to commit to
+            </span>
+            <br class="server-documentation-text109" />
+            <span class="server-documentation-text110">
+              dict: the dictionary to commit from
+            </span>
+            <br class="server-documentation-text111" />
+            <br class="server-documentation-text112" />
+            <span class="server-documentation-text113">Returns</span>
+            <span class="server-documentation-text114">:</span>
+            <br class="server-documentation-text115" />
+            <span class="server-documentation-text116">N/A</span>
+            <br />
+            <br />
+            <span class="server-documentation-text119">isthere</span>
+            <span class="server-documentation-text120">:</span>
+            <br />
+            <span>Checks if a value is in the provided dictionary</span>
+            <br />
+            <br />
+            <span class="server-documentation-text125">Arguments</span>
+            <span>:</span>
+            <br />
+            <span>value: the value to search for</span>
+            <br />
+            <span>dict: the dictionary to search</span>
+            <br />
+            <br />
+            <span class="server-documentation-text133">Returns:</span>
+            <br />
+            <span>boolean: (True/False)</span>
+            <br />
+            <br />
+            <span class="server-documentation-text138">dump and dumps:</span>
+            <br />
+            <span>see&nbsp;https://docs.python.org/3/library/json.html</span>
+            <br />
+          </span>
+          <h2 class="server-documentation-text142">encryptor.py</h2>
+          <span>
+            <span class="server-documentation-text144">
+              The encryptor handles encryption/decryption
+            </span>
+            <br class="server-documentation-text145" />
+            <br class="server-documentation-text146" />
+            <br class="server-documentation-text147" />
+            <span class="server-documentation-text148">Imports:</span>
+            <br class="server-documentation-text149" />
+            <span class="server-documentation-text150">
+              python-gnupg (installed via requirements.txt)
+            </span>
+            <br class="server-documentation-text151" />
+            <br class="server-documentation-text152" />
+            <span class="server-documentation-text153">Functions</span>
+            <span class="server-documentation-text154">:&nbsp;</span>
+            <br class="server-documentation-text155" />
+            <br class="server-documentation-text156" />
+            <span class="server-documentation-text157">Encrypt</span>
+            <span class="server-documentation-text158">:</span>
+            <br class="server-documentation-text159" />
+            <span class="server-documentation-text160">
+              Encrypts the message using the users public key
+            </span>
+            <br class="server-documentation-text161" />
+            <br class="server-documentation-text162" />
+            <span class="server-documentation-text163">arguments</span>
+            <span class="server-documentation-text164">:&nbsp;</span>
+            <br class="server-documentation-text165" />
+            <span class="server-documentation-text166">
+              content: the content to encrypt (string)
+            </span>
+            <br class="server-documentation-text167" />
+            <span class="server-documentation-text168">
+              key: receipients public key
+            </span>
+            <br class="server-documentation-text169" />
+            <br class="server-documentation-text170" />
+            <span class="server-documentation-text171">Returns</span>
+            <span class="server-documentation-text172">:</span>
+            <br class="server-documentation-text173" />
+            <span class="server-documentation-text174">
+              final: the encrypted message
+            </span>
+            <br class="server-documentation-text175" />
+            <span class="server-documentation-text176">Decrypt</span>
+            <span class="server-documentation-text177">:</span>
+            <br class="server-documentation-text178" />
+            <span class="server-documentation-text179">
+              Decrypts a message with the servers private key
+            </span>
+            <br class="server-documentation-text180" />
+            <br class="server-documentation-text181" />
+            <span class="server-documentation-text182">arguments</span>
+            <span class="server-documentation-text183">:</span>
+            <br class="server-documentation-text184" />
+            <span class="server-documentation-text185">
+              content: the encrypted message
+            </span>
+            <br class="server-documentation-text186" />
+            <span class="server-documentation-text187">
+              key: the server public key
+            </span>
+            <br class="server-documentation-text188" />
+            <span class="server-documentation-text189">Returns</span>
+            <span class="server-documentation-text190">:</span>
+            <br class="server-documentation-text191" />
+            <span>final: the decrypted message</span>
+            <br />
+            <br />
+            <br />
+          </span>
+        </div>
+        <div id="API" class="server-documentation-banner1">
+          <h1 class="server-documentation-text196">
+            <span>API</span>
+            <br class="server-documentation-text198" />
+            <span></span>
+          </h1>
+          <span class="server-documentation-text200">
+            <span>
+              The server is designed for thrid party clients to be used instead
+              of the primitive official CLI
+            </span>
+            <br />
+          </span>
+          <h2 class="server-documentation-text203">Overview</h2>
+          <span class="server-documentation-text204">
+            <span>Structure:</span>
+            <br />
+            <br />
+            <span>general user:</span>
+            <br />
+            <span>&lt;serveraddress&gt;</span>
+            <br />
+            <span>&lt;serveraddress&gt;/init&nbsp;</span>
+            <br />
+            <span>&lt;serveraddress&gt;/messages</span>
+            <br />
+            <span>&lt;serveraddress&gt;/messages/send</span>
+            <br />
+            <span>&lt;serveraddress&gt;/banish</span>
+            <br />
+            <br />
+            <span>ADMIN:</span>
+            <br />
+            <span>&lt;serveraddress&gt;/admin</span>
+            <br />
+            <span>&lt;serveraddress&gt;/admin/init</span>
+            <br />
+            <span>&lt;serveraddress&gt;/admin/banish</span>
+            <br />
+            <span>&lt;serveraddress&gt;/admin/stop</span>
+            <br />
+          </span>
+          <h2 class="server-documentation-text231">
+            <span>Headers</span>
+            <br />
+          </h2>
+          <span>
+            <span>AUTH: your auth key</span>
+            <br />
+            <br />
+            <span>Encrypted?: is the message encrypted</span>
+            <br />
+            <br />
+            <span>Password: the server password</span>
+            <br />
+            <br />
+            <span>PGP: : your public key</span>
+            <br />
+            <br />
+            <span>Content-type: the content type</span>
+            <br />
+            <br />
+            <span class="server-documentation-text250">AUTH:</span>
+            <br />
+            <br />
+            <span>The AUTH key is how the server knows who you are.</span>
+            <br />
+            <span>the only times you dont need the AUTH header is&nbsp;</span>
+            <br />
+            <span>during a /init request</span>
+            <br />
+            <br />
+            <span class="server-documentation-text260">ENCRYPTED:</span>
+            <br />
+            <br />
+            <span>Encyrpted tells the server that your message has been</span>
+            <br />
+            <span>encrypted. This can be either 'True' or 'False' THIS</span>
+            <br />
+            <span>MUST BE A STRING!!! Not needed during a /, /init, or</span>
+            <br />
+            <span>a /banish request</span>
+            <br />
+            <br class="server-documentation-text271" />
+            <span class="server-documentation-text272">PASSWORD:</span>
+            <br class="server-documentation-text273" />
+            <br class="server-documentation-text274" />
+            <span class="server-documentation-text275">
+              The password header is only required during a / init request,
+            </span>
+            <br class="server-documentation-text276" />
+            <span class="server-documentation-text277">
+              and only if the server is password protected. This is because
+            </span>
+            <br class="server-documentation-text278" />
+            <span class="server-documentation-text279">
+              it is the most convenient for the user not having to input a&nbsp;
+            </span>
+            <br class="server-documentation-text280" />
+            <span class="server-documentation-text281">
+              password at every connection
+            </span>
+            <br class="server-documentation-text282" />
+            <br class="server-documentation-text283" />
+            <span class="server-documentation-text284">PGP: :</span>
+            <br class="server-documentation-text285" />
+            <span class="server-documentation-text286">
+              the PGP: header is required when the ENCRYPTED header is, it is
+              the users public PGP key
+            </span>
+            <br class="server-documentation-text287" />
+            <br class="server-documentation-text288" />
+            <span class="server-documentation-text289">Content-type:</span>
+            <br class="server-documentation-text290" />
+            <span class="server-documentation-text291">
+              This is pretty self explanitory, required for POST and PUT
+              requests
+            </span>
+            <br class="server-documentation-text292" />
+          </span>
+          <h2 class="server-documentation-text293">&lt;serveraddress&gt;</h2>
+          <span>
+            <span>Request type: GET</span>
+            <br />
+            <span>Mandatory headers:</span>
+            <br />
+            <span>&nbsp; &nbsp; -AUTH</span>
+            <br />
+            <span>&nbsp; &nbsp; -PGP</span>
+            <br />
+            <br />
+            <span>
+              Server address is used to get the general information&nbsp; about
+              the server
+            </span>
+            <br />
+            <br />
+            <span>Response:</span>
+            <br />
+            <span>200 - successful</span>
+            <br />
+            <br />
+          </span>
+        </div>
+      </div>
+    </div>
+    <script
+      data-section-id="navbar"
+      src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
+    ></script>
+  </body>
+</html>
