@@ -17,6 +17,7 @@ def generate_key():
     serverJSON['auth'][str(count)] = ''.join(key)
     json.commit('server.json',serverJSON)
     print(f'Authkey {key} has been created!')
+    return key
 
 def banish(key):
     serverJSON = json.retrieve('server.json')

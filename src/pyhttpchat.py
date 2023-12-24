@@ -21,7 +21,7 @@ class ReqestHandler(BaseHTTPRequestHandler):
         if self.path == '/init':
             info = json.retrieve('server.json')
             if info['auth']['open'] == False:
-                if self.headers['Password'] == info['auth']['pass']:
+                if self.headers['PASSWORD'] == info['auth']['pass']:
                     pass
                 else:
                     self.send_response(401)
@@ -37,7 +37,7 @@ class ReqestHandler(BaseHTTPRequestHandler):
             self.wfile.write(f'Your AUTH key is : {key}'.encode())
 
         if self.path == '':
-            if self.headers['Encrypted?'] == 'False':
+            if self.headers['ENCRYPTED'] == 'False':
                 info = json.retrieve('server.json')
                 if json.isthere(self.headers['Auth'],info['auth']) == False:
                     self.send_response(401)
@@ -55,7 +55,7 @@ class ReqestHandler(BaseHTTPRequestHandler):
                 self.wfile.write(json.dumps(send))
             
         if self.path == '/messages':
-            if self.headers['Encrypted?'] == 'False':
+            if self.headers['ENCRYPTED'] == 'False':
                 self.send_response(401)
                 self.send_header('Content-type','text/html')
                 self.end_headers()
@@ -64,7 +64,7 @@ class ReqestHandler(BaseHTTPRequestHandler):
             msg = json.retrieve('messages.json')
             info = json.retrieve('server.json')
             
-            if json.isthere(self.headers['Auth'],info['auth']) == False:
+            if json.isthere(self.headers['AUTH'],info['auth']) == False:
                 self.send_response(401)
                 self.send_header('Content-type','text/html')
                 self.send_header('Encrypted?','False')
@@ -83,12 +83,15 @@ class ReqestHandler(BaseHTTPRequestHandler):
                 publickey = f.read()
             self.send_header('PGP:',publickey)
             self.end_headers()
+           
             if 'PGP' in self.headers:
                 pass
             else:
                 return None
-            public = self.headers['PGP:']
+           
+            public = self.headers['PGP']
             sendit = {}
+           
             for keys in msg:
                 newkey = encrypt(keys,public)
                 content = msg[keys]['content']
@@ -104,6 +107,41 @@ class ReqestHandler(BaseHTTPRequestHandler):
                 sendit[newkey][label2] = newuser
                 sendit[newkey][label3] = newtime
             self.wfile.write(json.dumps(sendit))
+    
+    
+    def do_POST(self):
+        info = json.retrieve('client.json')
+        if self.path == '/messages/send':
+            if 'ENCRYPTED' in self.headers:
+                pass
+            else:
+                self.send_response(400)
+                self.send_header("Content-type",'text/html')
+                self.end_headers()
+                self.wfile.write('400, missing header "ENCRYPTED"')
+            
+            if 'AUTH' in self.headers:
+                pass
+            else:
+                self.send_response(400)
+                self.send_header("Content-type",'text/html')
+                self.end_headers()
+                self.wfile.write('400, missing header "AUTH"')
+            
+            
+
+            if json.isthere(self.headers['AUTH'],info['auth']) == False:
+                self.send_response(401)
+                self.send_header("Content-type",'text/html')
+                self.end_headers()
+                self.wfile.write('401, incorrect auth key')
+
+            content_length = self.headers['content_length']
+            message = self.rfile.read(content_length).decode()
+            with open('private.asc') as f:
+                private_key = f.read()
+
+            msg = decrypt(message,private_key)
             
 def run():
     addr = '',8000
